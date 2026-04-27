@@ -1067,13 +1067,13 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
   </div>
 
   <!-- ══ IP COMMUNITY ══ -->
-  <div class="screen" id="sc-community">
+  <div class="screen" id="sc-community" style="position:relative;">
     <div class="subscreen-header" style="background:linear-gradient(135deg,#7B6EF6,#8A8FD4);">
       <div class="sub-back" onclick="goTo('sc-home')"><span style="font-size:20px;font-weight:900;color:#fff;">‹</span><span style="font-size:13px;font-weight:800;color:#fff;">返回</span></div>
       <div class="sub-title">IP社群</div>
       <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.84);margin-top:4px;">展示你的宠物IP，并发现同好创作</div>
     </div>
-    <div class="subscreen-body" style="display:flex;flex-direction:column;gap:12px;">
+    <div class="subscreen-body" style="display:flex;flex-direction:column;gap:12px;padding-bottom:118px;">
       <div style="display:flex;gap:8px;">
         <button id="communityTabMine" type="button" class="fig-chip on" style="flex:1;" onclick="setCommunityTab('mine')">我的创作</button>
         <button id="communityTabOthers" type="button" class="fig-chip" style="flex:1;" onclick="setCommunityTab('others')">IP社群</button>
@@ -1178,22 +1178,16 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
         </div>
       </div>
 
-      <div id="communityMineQuickNav" class="profile-menu-card" style="padding:8px;position:sticky;bottom:0;z-index:5;display:block;">
+      <div id="communityMineQuickNav" class="profile-menu-card" style="padding:8px;position:absolute;left:10px;right:10px;bottom:10px;z-index:40;display:block;box-shadow:0 8px 24px rgba(0,0,0,0.12);">
         <div style="display:flex;gap:8px;">
-          <button type="button" class="nav-item" style="flex:1;min-height:64px;" onclick="showToast('⭐ 打开我的收藏')">
+          <button type="button" class="nav-item" style="flex:1;min-height:52px;" onclick="showToast('⭐ 打开我的收藏')" aria-label="我的收藏">
             <span class="nav-icon" style="opacity:1;">⭐</span>
-            <span class="nav-lbl" style="color:var(--text);font-size:10px;">我的收藏</span>
-            <span class="profile-menu-badge" style="background:#fff4ec;color:var(--orange);">28</span>
           </button>
-          <button type="button" class="nav-item" style="flex:1;min-height:64px;" onclick="showToast('👍 打开我的点赞')">
+          <button type="button" class="nav-item" style="flex:1;min-height:52px;" onclick="showToast('👍 打开我的点赞')" aria-label="我的点赞">
             <span class="nav-icon" style="opacity:1;">👍</span>
-            <span class="nav-lbl" style="color:var(--text);font-size:10px;">我的点赞</span>
-            <span class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">112</span>
           </button>
-          <button type="button" class="nav-item" style="flex:1;min-height:64px;" onclick="showToast('💬 打开消息中心')">
+          <button type="button" class="nav-item" style="flex:1;min-height:52px;" onclick="showToast('💬 打开消息中心')" aria-label="消息中心">
             <span class="nav-icon" style="opacity:1;">💬</span>
-            <span class="nav-lbl" style="color:var(--text);font-size:10px;">消息</span>
-            <span class="profile-menu-badge" style="background:#fff0f8;color:#e879c0;">2 新</span>
           </button>
         </div>
       </div>
@@ -1207,7 +1201,7 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
       <div class="sub-title">内容工坊</div>
       <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.84);margin-top:4px;">支持宠物IP图文生成与视频生成</div>
     </div>
-    <div class="subscreen-body" style="display:flex;flex-direction:column;gap:12px;">
+    <div class="subscreen-body" style="display:flex;flex-direction:column;gap:12px;padding-bottom:24px;overflow-y:visible;flex:0 0 auto;min-height:auto;">
       <div style="display:flex;gap:8px;">
         <button id="studioModeVideo" type="button" class="fig-chip on" style="flex:1;" onclick="setStudioMode('video')">视频生成</button>
         <button id="studioModePost" type="button" class="fig-chip" style="flex:1;" onclick="setStudioMode('post')">图文生成</button>
@@ -1220,10 +1214,7 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
           <button id="studioDuration15" type="button" class="fig-chip on" style="flex:1;" onclick="pickStudioDuration(15)">15s</button>
           <button id="studioDuration30" type="button" class="fig-chip" style="flex:1;" onclick="pickStudioDuration(30)">30s</button>
         </div>
-        <div style="display:flex;gap:8px;margin-top:10px;">
-          <button type="button" class="shop-cta" style="flex:1;margin-top:0;" onclick="startAnimationGenerationFromUI()">生成视频</button>
-          <button type="button" class="shop-cta" style="flex:1;margin-top:0;background:linear-gradient(90deg,#F07830,#F5A24B);" onclick="startPostGenerationFromUI()">生成图文</button>
-        </div>
+        <button type="button" class="shop-cta" style="width:100%;margin-top:10px;" onclick="startAIOneClickGeneration()">AI一键生成</button>
       </div>
       <div class="profile-menu-card" style="padding:12px;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
@@ -1235,9 +1226,15 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
           <div class="story-text">试试模板：日常撒娇 15s 或 今日治愈图文</div>
         </div>
         <div style="display:flex;gap:8px;margin-top:10px;">
-          <button type="button" class="fig-chip" style="flex:1;" onclick="saveStudioOutput()">保存</button>
-          <button type="button" class="fig-chip" style="flex:1;" onclick="publishStudioOutput()">发布</button>
-          <button type="button" class="fig-chip" style="flex:1;" onclick="quickShareToSocial()">一键转发</button>
+          <button type="button" class="fig-chip" style="flex:1;" onclick="saveStudioOutput()">保存至本地</button>
+          <button type="button" class="fig-chip" style="flex:1;" onclick="publishStudioOutput()">发布到社群</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
+          <button type="button" class="fig-chip" style="flex:1 1 calc(33.33% - 6px);min-width:88px;min-height:42px;" onclick="publishToPlatform('小红书')">📕 小红书</button>
+          <button type="button" class="fig-chip" style="flex:1 1 calc(33.33% - 6px);min-width:88px;min-height:42px;" onclick="publishToPlatform('抖音')">🎵 抖音</button>
+          <button type="button" class="fig-chip" style="flex:1 1 calc(33.33% - 6px);min-width:88px;min-height:42px;" onclick="publishToPlatform('bilibili')">📺 bilibili</button>
+          <button type="button" class="fig-chip" style="flex:1 1 calc(50% - 4px);min-width:128px;min-height:42px;" onclick="publishToPlatform('朋友圈')">🟢 朋友圈</button>
+          <button type="button" class="fig-chip" style="flex:1 1 calc(50% - 4px);min-width:128px;min-height:42px;" onclick="publishToPlatform('快手')">⚡ 快手</button>
         </div>
       </div>
     </div>
@@ -3001,6 +2998,10 @@ function startPostGenerationFromUI(){
   startStudioGeneration();
 }
 
+function startAIOneClickGeneration(){
+  startStudioGeneration();
+}
+
 function getStudioPromptText(){
   var el = document.getElementById('studioPromptInput');
   if (!el) return '';
@@ -3024,6 +3025,14 @@ function publishStudioOutput(){
     return;
   }
   showToast('🚀 已发布到内容流');
+}
+
+function publishToPlatform(platform){
+  if (!studioState.outputs.length) {
+    showToast('📭 先生成一个内容再发布到' + platform);
+    return;
+  }
+  showToast('🚀 已发布到' + platform);
 }
 </script>
 </body>
