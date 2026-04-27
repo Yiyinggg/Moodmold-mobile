@@ -1,0 +1,4 @@
+syncStats();
+initHomePetSwitcher();
+initIpScreen();
+initStudioScreen();
