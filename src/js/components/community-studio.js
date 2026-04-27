@@ -127,14 +127,14 @@ function renderStudioOutputs(){
   if (!result) return;
   result.classList.remove('studio-result--loading');
   if (!studioState.outputs.length){
-    result.innerHTML = '<div class="studio-result-title">还没有生成内容</div><div class="studio-result-sub">试试模板：宠物短视频 15s 或 图文 2张图</div>';
+    result.innerHTML = '<div class="studio-result-title" style="color:#fff;">还没有生成内容</div><div class="studio-result-sub" style="color:rgba(255,255,255,0.86);">试试模板：宠物短视频 15s 或 图文 2张图</div>';
     if (previewMedia) previewMedia.innerHTML = '暂无可预览结果';
     if (previewMeta) previewMeta.textContent = '先点击 AI一键生成 或选择模式生成内容';
     renderCommunityMineOutputs();
     return;
   }
   var top = studioState.outputs[0];
-  result.innerHTML = '<div class="studio-result-title">最新作品</div><div class="studio-result-sub">' + top.title + '</div>';
+  result.innerHTML = '<div class="studio-result-title" style="color:#fff;">最新作品</div><div class="studio-result-sub" style="color:rgba(255,255,255,0.86);">' + top.title + '</div>';
   if (previewMedia) {
     if (top.type === 'post') {
       previewMedia.innerHTML = '<img src="assets/homedog.png" alt="图文生成结果预览" loading="lazy" decoding="async" style="width:100%;height:100%;border-radius:10px;object-fit:cover;display:block;"/>';
@@ -156,9 +156,9 @@ function startStudioGeneration(){
   if (result) {
     result.classList.add('studio-result--loading');
     if (studioState.mode === 'post') {
-      result.innerHTML = '<div class="studio-result-title">正在生成 IP 图文...</div><div class="studio-result-sub">请稍候，正在根据你的文字描述编排文案与配图</div>';
+      result.innerHTML = '<div class="studio-result-title" style="color:#fff;">正在生成 IP 图文...</div><div class="studio-result-sub" style="color:rgba(255,255,255,0.86);">请稍候，正在根据你的文字描述编排文案与配图</div>';
     } else {
-      result.innerHTML = '<div class="studio-result-title">正在生成宠物动画...</div><div class="studio-result-sub">请稍候，正在根据你的文字描述合成 ' + studioState.duration + ' 秒视频</div>';
+      result.innerHTML = '<div class="studio-result-title" style="color:#fff;">正在生成宠物动画...</div><div class="studio-result-sub" style="color:rgba(255,255,255,0.86);">请稍候，正在根据你的文字描述合成 ' + studioState.duration + ' 秒视频</div>';
     }
   }
   var previewMedia = document.getElementById('studioPreviewMedia');

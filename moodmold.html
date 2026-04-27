@@ -12,12 +12,21 @@
   --orange:#F07830;--orange2:#F5A24B;--orange-dark:#D05E18;
   --pink:#e8547a;--green:#3DC87A;--purple:#7B6EF6;
   --blue:#8A8FD4;--blue2:#6B70C4;
-  --white:#fff;--bg:#f5f5f9;--text:#1a1a1a;--muted:#999;
+  --white:#fff;--bg:#efe9ff;--text:#1a1a1a;--muted:#999;
   --font:'Nunito',sans-serif;
 }
-body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px 16px 40px;min-height:100vh;}
+body{
+  font-family:var(--font);
+  background:linear-gradient(165deg,#f2edff 0%,#e9e2ff 48%,#ddd6ff 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px 16px 40px;min-height:100vh;
+}
 
-.phone-shell{width:340px;height:720px;border-radius:44px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.18),0 2px 8px rgba(0,0,0,0.08);background:var(--bg);position:relative;border:1px solid rgba(0,0,0,0.07);display:flex;flex-direction:column;}
+.phone-shell{
+  width:340px;height:720px;border-radius:44px;overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,0.18),0 2px 8px rgba(0,0,0,0.08);
+  background:linear-gradient(160deg,#f6f2ff 0%,#eee7ff 52%,#e4dcff 100%);
+  position:relative;border:1px solid rgba(0,0,0,0.07);display:flex;flex-direction:column;
+}
 
 .screen{display:none;flex:1;min-height:0;flex-direction:column;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;}
 .screen.active{display:flex;}
@@ -295,13 +304,38 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
 .t-wait{color:#ccc;}
 
 /* ══════════ SHOP ══════════ */
-#sc-shop.screen{overflow:hidden;}
-.shop-header{flex-shrink:0;background:linear-gradient(135deg,var(--orange2),var(--orange));padding:20px 22px 22px;}
+#sc-shop.screen{
+  overflow:hidden;
+  background:linear-gradient(165deg,#f09345 0%,#ef7f34 48%,#ea6f2a 100%);
+}
+.shop-header{
+  flex-shrink:0;
+  background:transparent;
+  border:none;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  padding:20px 22px 22px;
+}
 .shop-tagline{font-size:11px;font-weight:700;color:rgba(255,255,255,0.88);margin-top:6px;line-height:1.4;}
-.shop-body{flex:1;min-height:0;padding:10px 12px 14px;background:var(--bg);display:flex;flex-direction:column;gap:8px;overflow:hidden;}
+.shop-body{
+  flex:1;min-height:0;padding:10px 12px 14px;
+  background:transparent;
+  display:flex;flex-direction:column;gap:8px;overflow:hidden;
+}
 .shop-section-lbl{flex-shrink:0;font-size:11px;font-weight:900;letter-spacing:0.08em;color:var(--muted);}
 .shop-sku-list{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;}
-.shop-product-row{position:relative;flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#fff;border-radius:22px;padding:20px 16px 22px;box-shadow:0 4px 18px rgba(0,0,0,0.07);cursor:pointer;border:2px solid rgba(0,0,0,0.05);transition:transform .15s,border-color .15s,box-shadow .15s;}
+.shop-product-row{
+  position:relative;flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  background:rgba(255,255,255,0.2);
+  border-radius:22px;
+  padding:20px 16px 22px;
+  box-shadow:0 8px 24px rgba(90,35,5,0.22);
+  cursor:pointer;
+  border:1.5px solid rgba(255,255,255,0.3);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  transition:transform .15s,border-color .15s,box-shadow .15s;
+}
 .shop-product-row:active{transform:scale(0.987);}
 .shop-product-row:hover{border-color:rgba(240,120,48,0.38);box-shadow:0 8px 24px rgba(240,120,48,0.14);}
 .shop-product-row--jew:hover{border-color:rgba(123,110,246,0.45);box-shadow:0 8px 24px rgba(138,143,212,0.18);}
@@ -310,8 +344,8 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
 .shop-p-thumb--jew{background:linear-gradient(145deg,#f0e8ff,#e4d4ff);}
 .shop-p-thumb-img{width:100%;height:100%;object-fit:cover;display:block;}
 .shop-p-meta{flex-shrink:0;min-width:0;width:100%;text-align:center;padding:0 28px 0 12px;}
-.shop-p-title{font-size:21px;font-weight:1000;color:var(--text);letter-spacing:-0.3px;}
-.shop-p-desc{font-size:12px;font-weight:700;color:var(--muted);margin-top:6px;line-height:1.45;}
+.shop-p-title{font-size:21px;font-weight:1000;color:#fff;letter-spacing:-0.3px;}
+.shop-p-desc{font-size:12px;font-weight:700;color:rgba(255,255,255,0.86);margin-top:6px;line-height:1.45;}
 .shop-p-price{font-size:18px;font-weight:1000;color:var(--orange);margin-top:10px;letter-spacing:-0.02em;}
 .shop-product-row--jew .shop-p-price{color:var(--purple);}
 .shop-p-go{position:absolute;top:14px;right:12px;font-size:32px;font-weight:900;color:#d8d8e0;line-height:1;}
@@ -644,6 +678,12 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
 .profile-menu-sub{font-size:10px;font-weight:600;color:var(--muted);margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .profile-menu-arrow{font-size:16px;color:#ccc;flex-shrink:0;}
 .profile-menu-badge{font-size:9px;font-weight:800;padding:2px 8px;border-radius:8px;flex-shrink:0;white-space:nowrap;}
+
+/* community text contrast fix */
+#sc-community .profile-menu-name{color:#ffffff !important;}
+#sc-community .profile-menu-sub{color:rgba(255,255,255,0.86) !important;}
+#sc-community .fig-chip{color:#1a1a1a;}
+#sc-community .fig-chip.on{color:#1a1a1a;}
 
 /* ══════════ BOARDING (寄养信息) ══════════ */
 .boarding-header{flex-shrink:0;background:linear-gradient(145deg,#F07830,#F5A24B 55%,#ffc87a);padding:20px 22px 34px;position:relative;overflow:hidden;}
@@ -1067,13 +1107,13 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
   </div>
 
   <!-- ══ IP COMMUNITY ══ -->
-  <div class="screen" id="sc-community" style="position:relative;">
+  <div class="screen" id="sc-community" style="position:relative;background:linear-gradient(160deg,#312a86 0%,#5a4fd3 40%,#7c64ef 72%,#9a7bff 100%);">
     <div class="subscreen-header" style="background:linear-gradient(135deg,#7B6EF6,#8A8FD4);">
       <div class="sub-back" onclick="goTo('sc-home')"><span style="font-size:20px;font-weight:900;color:#fff;">‹</span><span style="font-size:13px;font-weight:800;color:#fff;">返回</span></div>
       <div class="sub-title">IP社群</div>
       <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.84);margin-top:4px;">展示你的宠物IP，并发现同好创作</div>
     </div>
-    <div class="subscreen-body" style="display:flex;flex-direction:column;gap:12px;padding-bottom:118px;">
+    <div class="subscreen-body" style="display:flex;flex-direction:column;gap:12px;padding-bottom:118px;background:transparent;">
       <div style="display:flex;gap:8px;">
         <button id="communityTabMine" type="button" class="fig-chip on" style="flex:1;" onclick="setCommunityTab('mine')">我的创作</button>
         <button id="communityTabOthers" type="button" class="fig-chip" style="flex:1;" onclick="setCommunityTab('others')">IP社群</button>
@@ -1081,8 +1121,8 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
       <button type="button" class="shop-cta" style="margin-top:0;" onclick="goTo('sc-studio')">去内容工坊创作</button>
 
       <div id="communityPanelMine" style="display:flex;flex-direction:column;gap:10px;">
-        <div id="communityMineList" class="profile-menu-card" style="padding:12px;display:flex;flex-direction:column;gap:10px;">
-          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+        <div id="communityMineList" style="padding:12px;display:flex;flex-direction:column;gap:10px;border-radius:16px;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.32);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 24px rgba(13,10,40,0.25);">
+          <div style="padding:8px;">
             <img src="assets/腊肠犬晚上奔跑动画风格照片.png" alt="巴纳比视频缩略图-夜跑冲刺" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
             <div style="padding:8px 4px 2px;">
               <div class="profile-menu-name">巴纳比 · 夜跑冲刺</div>
@@ -1090,7 +1130,7 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
             </div>
             <div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">视频</span></div>
           </div>
-          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+          <div style="padding:8px;">
             <img src="assets/腊肠犬撒娇照片.png" alt="巴纳比图文缩略图-撒娇时刻" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
             <div style="padding:8px 4px 2px;">
               <div class="profile-menu-name">巴纳比 · 今天的撒娇日记</div>
@@ -1098,7 +1138,7 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
             </div>
             <div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#fff4ec;color:var(--orange);">图文</span></div>
           </div>
-          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+          <div style="padding:8px;">
             <img src="assets/腊肠犬玩具挑战赛照片.png" alt="巴纳比视频缩略图-玩具挑战赛" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
             <div style="padding:8px 4px 2px;">
               <div class="profile-menu-name">巴纳比 · 玩具挑战赛</div>
@@ -1106,7 +1146,7 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
             </div>
             <div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">视频</span></div>
           </div>
-          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+          <div style="padding:8px;">
             <img src="assets/腊肠犬午后治愈.png" alt="巴纳比图文缩略图-治愈午后" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
             <div style="padding:8px 4px 2px;">
               <div class="profile-menu-name">巴纳比 · 治愈午后图文</div>
@@ -1114,7 +1154,7 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
             </div>
             <div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#fff4ec;color:var(--orange);">图文</span></div>
           </div>
-          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+          <div style="padding:8px;">
             <img src="assets/腊肠犬回家第一秒.png" alt="巴纳比视频缩略图-回家第一秒" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
             <div style="padding:8px 4px 2px;">
               <div class="profile-menu-name">巴纳比 · 回家第一秒</div>
@@ -1122,7 +1162,7 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
             </div>
             <div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">视频</span></div>
           </div>
-          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+          <div style="padding:8px;">
             <img src="assets/腊肠犬雨天陪伴.png" alt="巴纳比图文缩略图-雨天陪伴" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
             <div style="padding:8px 4px 2px;">
               <div class="profile-menu-name">巴纳比 · 雨天陪伴手账</div>
@@ -1134,8 +1174,8 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
       </div>
 
       <div id="communityPanelOthers" style="display:none;flex-direction:column;gap:10px;">
-        <div class="profile-menu-card" style="padding:12px;display:flex;flex-direction:column;gap:10px;">
-          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+        <div style="padding:12px;display:flex;flex-direction:column;gap:10px;border-radius:16px;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.32);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 24px rgba(13,10,40,0.25);">
+          <div style="padding:8px;">
             <img src="assets/卡通风格下雨天小猫等候主人.png" alt="IP社群图文缩略图-小猫等候主人" loading="lazy" decoding="async" style="width:100%;height:156px;border-radius:10px;object-fit:cover;display:block;"/>
             <div style="padding:8px 4px 2px;">
               <div class="profile-menu-name">布丁喵 · 雨天等主人</div>
@@ -1145,7 +1185,7 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
               <button type="button" class="fig-chip" style="padding:6px 9px;" onclick="toggleCommunityLike(this)">👍 <span>2100</span></button>
             </div>
           </div>
-          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+          <div style="padding:8px;">
             <img src="assets/打工猫下班日记-图1打卡下班.png" alt="IP社群图文缩略图-打工猫下班日记" loading="lazy" decoding="async" style="width:100%;height:156px;border-radius:10px;object-fit:cover;display:block;"/>
             <div style="padding:8px 4px 2px;">
               <div class="profile-menu-name">打工猫下班日记 · 今日更新</div>
@@ -1155,7 +1195,7 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
               <button type="button" class="fig-chip" style="padding:6px 9px;" onclick="toggleCommunityFav(this)">⭐ <span>196</span></button>
             </div>
           </div>
-          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+          <div style="padding:8px;">
             <img src="assets/水貂周边产品展示橱窗.png" alt="IP社群图文缩略图-水貂周边展示" loading="lazy" decoding="async" style="width:100%;height:156px;border-radius:10px;object-fit:cover;display:block;"/>
             <div style="padding:8px 4px 2px;">
               <div class="profile-menu-name">水貂周边橱窗 · 新品发布</div>
@@ -1165,7 +1205,7 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
               <button type="button" class="fig-chip" style="padding:6px 9px;" onclick="toggleCommunityLike(this)">👍 <span>1200</span></button>
             </div>
           </div>
-          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+          <div style="padding:8px;">
             <img src="assets/dogphoto.png" alt="IP社群视频缩略图-巴纳比海边奔跑" loading="lazy" decoding="async" style="width:100%;height:156px;border-radius:10px;object-fit:cover;display:block;"/>
             <div style="padding:8px 4px 2px;">
               <div class="profile-menu-name">Lucky · 海边奔跑</div>
@@ -1178,7 +1218,7 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
         </div>
       </div>
 
-      <div id="communityMineQuickNav" class="profile-menu-card" style="padding:8px;position:absolute;left:10px;right:10px;bottom:10px;z-index:40;display:block;box-shadow:0 8px 24px rgba(0,0,0,0.12);">
+      <div id="communityMineQuickNav" style="padding:8px;position:absolute;left:10px;right:10px;bottom:10px;z-index:40;display:block;border-radius:16px;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.32);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 24px rgba(13,10,40,0.25);">
         <div style="display:flex;gap:8px;">
           <button type="button" class="nav-item" style="flex:1;min-height:52px;" onclick="showToast('⭐ 打开我的收藏')" aria-label="我的收藏">
             <span class="nav-icon" style="opacity:1;">⭐</span>
@@ -1195,20 +1235,20 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
   </div>
 
   <!-- ══ STUDIO ══ -->
-  <div class="screen" id="sc-studio">
+  <div class="screen" id="sc-studio" style="background:linear-gradient(160deg,#312a86 0%,#5a4fd3 40%,#7c64ef 72%,#9a7bff 100%);">
     <div class="subscreen-header" style="background:linear-gradient(135deg,#6B70C4,#8A8FD4);">
       <div class="sub-back" onclick="goTo('sc-community')"><span style="font-size:20px;font-weight:900;color:#fff;">‹</span><span style="font-size:13px;font-weight:800;color:#fff;">返回</span></div>
       <div class="sub-title">内容工坊</div>
       <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.84);margin-top:4px;">支持宠物IP图文生成与视频生成</div>
     </div>
-    <div class="subscreen-body" style="display:flex;flex-direction:column;gap:12px;padding-bottom:24px;overflow-y:visible;flex:0 0 auto;min-height:auto;">
+    <div class="subscreen-body" style="display:flex;flex-direction:column;gap:12px;padding-bottom:24px;overflow-y:visible;flex:0 0 auto;min-height:auto;background:transparent;">
       <div style="display:flex;gap:8px;">
         <button id="studioModeVideo" type="button" class="fig-chip on" style="flex:1;" onclick="setStudioMode('video')">视频生成</button>
         <button id="studioModePost" type="button" class="fig-chip" style="flex:1;" onclick="setStudioMode('post')">图文生成</button>
       </div>
-      <div class="profile-menu-card" style="padding:12px;">
-        <div id="studioMainTitle" style="font-size:15px;font-weight:900;color:var(--text);margin-bottom:6px;">生成宠物动画</div>
-        <div id="studioHintText" style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px;">补全2项设定可提升动画质量</div>
+      <div style="padding:12px;border-radius:16px;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.32);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 24px rgba(13,10,40,0.25);">
+        <div id="studioMainTitle" style="font-size:15px;font-weight:900;color:#fff;margin-bottom:6px;">生成宠物动画</div>
+        <div id="studioHintText" style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.86);margin-bottom:10px;">补全2项设定可提升动画质量</div>
         <textarea id="studioPromptInput" class="cf-input" style="height:72px;resize:none;" placeholder="描述你想生成的内容，例如：巴纳比在雨后公园追小鸭"></textarea>
         <div style="display:flex;gap:8px;margin-top:10px;">
           <button id="studioDuration15" type="button" class="fig-chip on" style="flex:1;" onclick="pickStudioDuration(15)">15s</button>
@@ -1216,16 +1256,16 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
         </div>
         <button type="button" class="shop-cta" style="width:100%;margin-top:10px;" onclick="startAIOneClickGeneration()">AI一键生成</button>
       </div>
-      <div class="profile-menu-card" style="padding:12px;">
+      <div style="padding:12px;border-radius:16px;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.32);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 24px rgba(13,10,40,0.25);">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
           <div style="font-size:14px;font-weight:900;color:var(--text);">生成结果</div>
           <span id="studioStatusPill" class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">待生成</span>
         </div>
-        <div id="studioPreviewBox" style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;margin-bottom:10px;">
-          <div id="studioPreviewMedia" style="width:100%;height:152px;border-radius:10px;background:#f4f4f8;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;font-weight:700;">暂无可预览结果</div>
-          <div id="studioPreviewMeta" style="font-size:11px;color:var(--muted);font-weight:700;margin-top:8px;">先点击 AI一键生成 或选择模式生成内容</div>
+        <div id="studioPreviewBox" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.28);border-radius:14px;padding:8px;margin-bottom:10px;">
+          <div id="studioPreviewMedia" style="width:100%;height:152px;border-radius:10px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;">暂无可预览结果</div>
+          <div id="studioPreviewMeta" style="font-size:11px;color:rgba(255,255,255,0.88);font-weight:700;margin-top:8px;">先点击 AI一键生成 或选择模式生成内容</div>
         </div>
-        <div id="studioResultCard" class="story-card" style="margin:0;">
+        <div id="studioResultCard" class="story-card" style="margin:0;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.28);box-shadow:none;color:#fff;">
           <div class="story-label">还没有生成内容</div>
           <div class="story-text">试试模板：日常撒娇 15s 或 今日治愈图文</div>
         </div>
