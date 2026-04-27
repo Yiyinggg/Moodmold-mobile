@@ -825,17 +825,17 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
     </div>
 
     <div class="bottom-nav">
-      <button type="button" class="nav-item nav-item--current" aria-current="page">
+      <button type="button" class="nav-item nav-item--current" aria-current="page" data-target="sc-home" onclick="goTo('sc-home')">
         <span class="nav-icon active">🏠</span><span class="nav-lbl active">首页</span>
       </button>
-      <button type="button" class="nav-item" onclick="showToast('🗂 收藏')">
-        <span class="nav-icon">⊞</span><span class="nav-lbl">收藏</span>
+      <button type="button" class="nav-item" data-target="sc-community" onclick="openIpCommunity()">
+        <span class="nav-icon">🌐</span><span class="nav-lbl">IP社群</span>
       </button>
       <button type="button" class="nav-create" onclick="openCreateSheet()" aria-label="创建">＋</button>
-      <button type="button" class="nav-item" onclick="goTo('sc-shop')">
+      <button type="button" class="nav-item" data-target="sc-shop" onclick="goTo('sc-shop')">
         <span class="nav-icon">🛍</span><span class="nav-lbl">商店</span>
       </button>
-      <button type="button" class="nav-item" onclick="goTo('sc-profile')">
+      <button type="button" class="nav-item" data-target="sc-profile" onclick="goTo('sc-profile')">
         <span class="nav-icon">👤</span><span class="nav-lbl">我的</span>
       </button>
     </div>
@@ -1062,6 +1062,183 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
         <div class="step-card step-card--wait" id="gstep2" role="listitem"><div class="step-row"><div class="step-dot s-wait" id="gd2">3</div><span class="step-txt t-wait" id="gt2">灵体塑形完成</span></div></div>
         <div class="step-card step-card--wait" id="gstep3" role="listitem"><div class="step-row"><div class="step-dot s-wait" id="gd3">4</div><span class="step-txt t-wait" id="gt3">情感共鸣建立</span></div></div>
         <div class="step-card step-card--wait" id="gstep4" role="listitem"><div class="step-row"><div class="step-dot s-wait" id="gd4">5</div><span class="step-txt t-wait" id="gt4">灵魂载体就绪</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ IP COMMUNITY ══ -->
+  <div class="screen" id="sc-community">
+    <div class="subscreen-header" style="background:linear-gradient(135deg,#7B6EF6,#8A8FD4);">
+      <div class="sub-back" onclick="goTo('sc-home')"><span style="font-size:20px;font-weight:900;color:#fff;">‹</span><span style="font-size:13px;font-weight:800;color:#fff;">返回</span></div>
+      <div class="sub-title">IP社群</div>
+      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.84);margin-top:4px;">展示你的宠物IP，并发现同好创作</div>
+    </div>
+    <div class="subscreen-body" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;gap:8px;">
+        <button id="communityTabMine" type="button" class="fig-chip on" style="flex:1;" onclick="setCommunityTab('mine')">我的创作</button>
+        <button id="communityTabOthers" type="button" class="fig-chip" style="flex:1;" onclick="setCommunityTab('others')">IP社群</button>
+      </div>
+      <button type="button" class="shop-cta" style="margin-top:0;" onclick="goTo('sc-studio')">去内容工坊创作</button>
+
+      <div id="communityPanelMine" style="display:flex;flex-direction:column;gap:10px;">
+        <div id="communityMineList" class="profile-menu-card" style="padding:12px;display:flex;flex-direction:column;gap:10px;">
+          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+            <img src="assets/dogphoto.png" alt="巴纳比视频缩略图" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
+            <div style="padding:8px 4px 2px;">
+              <div class="profile-menu-name">巴纳比 · 夜跑冲刺</div>
+              <div class="profile-menu-sub">视频 · 30s · 刚刚生成</div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">视频</span></div>
+          </div>
+          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+            <img src="assets/homedog.png" alt="巴纳比图文缩略图" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
+            <div style="padding:8px 4px 2px;">
+              <div class="profile-menu-name">巴纳比 · 今天的撒娇日记</div>
+              <div class="profile-menu-sub">图文 · 4 张图 · 刚刚生成</div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#fff4ec;color:var(--orange);">图文</span></div>
+          </div>
+          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+            <img src="assets/dogtoy.png" alt="巴纳比视频缩略图-玩具挑战" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
+            <div style="padding:8px 4px 2px;">
+              <div class="profile-menu-name">巴纳比 · 玩具挑战赛</div>
+              <div class="profile-menu-sub">视频 · 15s · 2 小时前</div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">视频</span></div>
+          </div>
+          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+            <img src="assets/homesusu.png" alt="巴纳比图文缩略图-治愈午后" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
+            <div style="padding:8px 4px 2px;">
+              <div class="profile-menu-name">巴纳比 · 治愈午后图文</div>
+              <div class="profile-menu-sub">图文 · 2 张图 · 今天 16:20</div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#fff4ec;color:var(--orange);">图文</span></div>
+          </div>
+          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+            <img src="assets/pet-home.png" alt="巴纳比视频缩略图-回家瞬间" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
+            <div style="padding:8px 4px 2px;">
+              <div class="profile-menu-name">巴纳比 · 回家第一秒</div>
+              <div class="profile-menu-sub">视频 · 30s · 昨天 21:08</div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">视频</span></div>
+          </div>
+          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+            <img src="assets/homecat2.png" alt="巴纳比图文缩略图-雨天陪伴" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/>
+            <div style="padding:8px 4px 2px;">
+              <div class="profile-menu-name">巴纳比 · 雨天陪伴手账</div>
+              <div class="profile-menu-sub">图文 · 6 张图 · 昨天 18:42</div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#fff4ec;color:var(--orange);">图文</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="communityPanelOthers" style="display:none;flex-direction:column;gap:10px;">
+        <div class="profile-menu-card" style="padding:12px;display:flex;flex-direction:column;gap:10px;">
+          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+            <img src="assets/卡通风格下雨天小猫等候主人.png" alt="IP社群图文缩略图-小猫等候主人" loading="lazy" decoding="async" style="width:100%;height:156px;border-radius:10px;object-fit:cover;display:block;"/>
+            <div style="padding:8px 4px 2px;">
+              <div class="profile-menu-name">布丁喵 · 雨天等主人</div>
+              <div class="profile-menu-sub">图文 · 2.1k 赞 · 280 收藏</div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;">
+              <button type="button" class="fig-chip" style="padding:6px 9px;" onclick="toggleCommunityLike(this)">👍 <span>2100</span></button>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+            <img src="assets/打工猫下班日记-图1打卡下班.png" alt="IP社群图文缩略图-打工猫下班日记" loading="lazy" decoding="async" style="width:100%;height:156px;border-radius:10px;object-fit:cover;display:block;"/>
+            <div style="padding:8px 4px 2px;">
+              <div class="profile-menu-name">打工猫下班日记 · 今日更新</div>
+              <div class="profile-menu-sub">图文 · 1.7k 赞 · 196 收藏</div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;">
+              <button type="button" class="fig-chip" style="padding:6px 9px;" onclick="toggleCommunityFav(this)">⭐ <span>196</span></button>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+            <img src="assets/水貂周边产品展示橱窗.png" alt="IP社群图文缩略图-水貂周边展示" loading="lazy" decoding="async" style="width:100%;height:156px;border-radius:10px;object-fit:cover;display:block;"/>
+            <div style="padding:8px 4px 2px;">
+              <div class="profile-menu-name">水貂周边橱窗 · 新品发布</div>
+              <div class="profile-menu-sub">图文 · 1.2k 赞 · 102 收藏</div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;">
+              <button type="button" class="fig-chip" style="padding:6px 9px;" onclick="toggleCommunityLike(this)">👍 <span>1200</span></button>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;">
+            <img src="assets/dogphoto.png" alt="IP社群视频缩略图-巴纳比海边奔跑" loading="lazy" decoding="async" style="width:100%;height:156px;border-radius:10px;object-fit:cover;display:block;"/>
+            <div style="padding:8px 4px 2px;">
+              <div class="profile-menu-name">Lucky · 海边奔跑</div>
+              <div class="profile-menu-sub">视频 · 1.3k 赞 · 130 收藏</div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;">
+              <button type="button" class="fig-chip" style="padding:6px 9px;" onclick="toggleCommunityFav(this)">⭐ <span>130</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="communityMineQuickNav" class="profile-menu-card" style="padding:8px;position:sticky;bottom:0;z-index:5;display:block;">
+        <div style="display:flex;gap:8px;">
+          <button type="button" class="nav-item" style="flex:1;min-height:64px;" onclick="showToast('⭐ 打开我的收藏')">
+            <span class="nav-icon" style="opacity:1;">⭐</span>
+            <span class="nav-lbl" style="color:var(--text);font-size:10px;">我的收藏</span>
+            <span class="profile-menu-badge" style="background:#fff4ec;color:var(--orange);">28</span>
+          </button>
+          <button type="button" class="nav-item" style="flex:1;min-height:64px;" onclick="showToast('👍 打开我的点赞')">
+            <span class="nav-icon" style="opacity:1;">👍</span>
+            <span class="nav-lbl" style="color:var(--text);font-size:10px;">我的点赞</span>
+            <span class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">112</span>
+          </button>
+          <button type="button" class="nav-item" style="flex:1;min-height:64px;" onclick="showToast('💬 打开消息中心')">
+            <span class="nav-icon" style="opacity:1;">💬</span>
+            <span class="nav-lbl" style="color:var(--text);font-size:10px;">消息</span>
+            <span class="profile-menu-badge" style="background:#fff0f8;color:#e879c0;">2 新</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ STUDIO ══ -->
+  <div class="screen" id="sc-studio">
+    <div class="subscreen-header" style="background:linear-gradient(135deg,#6B70C4,#8A8FD4);">
+      <div class="sub-back" onclick="goTo('sc-community')"><span style="font-size:20px;font-weight:900;color:#fff;">‹</span><span style="font-size:13px;font-weight:800;color:#fff;">返回</span></div>
+      <div class="sub-title">内容工坊</div>
+      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.84);margin-top:4px;">支持宠物IP图文生成与视频生成</div>
+    </div>
+    <div class="subscreen-body" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;gap:8px;">
+        <button id="studioModeVideo" type="button" class="fig-chip on" style="flex:1;" onclick="setStudioMode('video')">视频生成</button>
+        <button id="studioModePost" type="button" class="fig-chip" style="flex:1;" onclick="setStudioMode('post')">图文生成</button>
+      </div>
+      <div class="profile-menu-card" style="padding:12px;">
+        <div id="studioMainTitle" style="font-size:15px;font-weight:900;color:var(--text);margin-bottom:6px;">生成宠物动画</div>
+        <div id="studioHintText" style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:10px;">补全2项设定可提升动画质量</div>
+        <textarea id="studioPromptInput" class="cf-input" style="height:72px;resize:none;" placeholder="描述你想生成的内容，例如：巴纳比在雨后公园追小鸭"></textarea>
+        <div style="display:flex;gap:8px;margin-top:10px;">
+          <button id="studioDuration15" type="button" class="fig-chip on" style="flex:1;" onclick="pickStudioDuration(15)">15s</button>
+          <button id="studioDuration30" type="button" class="fig-chip" style="flex:1;" onclick="pickStudioDuration(30)">30s</button>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:10px;">
+          <button type="button" class="shop-cta" style="flex:1;margin-top:0;" onclick="startAnimationGenerationFromUI()">生成视频</button>
+          <button type="button" class="shop-cta" style="flex:1;margin-top:0;background:linear-gradient(90deg,#F07830,#F5A24B);" onclick="startPostGenerationFromUI()">生成图文</button>
+        </div>
+      </div>
+      <div class="profile-menu-card" style="padding:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="font-size:14px;font-weight:900;color:var(--text);">生成结果</div>
+          <span id="studioStatusPill" class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">待生成</span>
+        </div>
+        <div id="studioResultCard" class="story-card" style="margin:0;">
+          <div class="story-label">还没有生成内容</div>
+          <div class="story-text">试试模板：日常撒娇 15s 或 今日治愈图文</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:10px;">
+          <button type="button" class="fig-chip" style="flex:1;" onclick="saveStudioOutput()">保存</button>
+          <button type="button" class="fig-chip" style="flex:1;" onclick="publishStudioOutput()">发布</button>
+          <button type="button" class="fig-chip" style="flex:1;" onclick="quickShareToSocial()">一键转发</button>
+        </div>
       </div>
     </div>
   </div>
@@ -2643,6 +2820,210 @@ function closeBoardingSheet(e){
   if (e.target === document.getElementById('boardingShareOverlay')){
     document.getElementById('boardingShareOverlay').classList.remove('open');
   }
+}
+
+/* ===== IP community + studio (single-file fallback) ===== */
+var studioState = {
+  mode: 'video',
+  duration: 15,
+  postCount: 2,
+  status: 'idle',
+  outputs: []
+};
+
+function getIpCompleteness(){
+  return 100;
+}
+
+function openIpCommunity(){
+  goTo('sc-community');
+  setCommunityTab('others');
+}
+
+function setCommunityTab(tab){
+  var mode = tab === 'mine' ? 'mine' : 'others';
+  var btnOthers = document.getElementById('communityTabOthers');
+  var btnMine = document.getElementById('communityTabMine');
+  var panelOthers = document.getElementById('communityPanelOthers');
+  var panelMine = document.getElementById('communityPanelMine');
+  var quickNav = document.getElementById('communityMineQuickNav');
+  if (btnOthers) btnOthers.classList.toggle('on', mode === 'others');
+  if (btnMine) btnMine.classList.toggle('on', mode === 'mine');
+  if (panelOthers) panelOthers.style.display = mode === 'others' ? 'flex' : 'none';
+  if (panelMine) panelMine.style.display = mode === 'mine' ? 'flex' : 'none';
+  if (quickNav) quickNav.style.display = 'block';
+}
+
+function toggleCommunityLike(btn){
+  toggleCommunityCount(btn, '点赞');
+}
+
+function toggleCommunityFav(btn){
+  toggleCommunityCount(btn, '收藏');
+}
+
+function toggleCommunityCount(btn, label){
+  if (!btn) return;
+  var countEl = btn.querySelector('span');
+  if (!countEl) return;
+  var cur = parseInt(countEl.textContent, 10);
+  if (isNaN(cur)) cur = 0;
+  var active = btn.classList.toggle('on');
+  countEl.textContent = String(Math.max(0, cur + (active ? 1 : -1)));
+  showToast((active ? '✅ 已' : '↩️ 取消') + label);
+}
+
+function quickShareToSocial(){
+  showToast('📣 已一键发送到社交媒体');
+}
+
+function getStudioHintForCompleteness(completeness){
+  if (completeness >= 50) return '';
+  return '补全2项设定可提升动画质量';
+}
+
+function renderStudioHint(){
+  var hint = document.getElementById('studioHintText');
+  if (!hint) return;
+  hint.textContent = getStudioHintForCompleteness(getIpCompleteness());
+}
+
+function setStudioMode(mode){
+  studioState.mode = mode === 'post' ? 'post' : 'video';
+  var modeVideo = document.getElementById('studioModeVideo');
+  var modePost = document.getElementById('studioModePost');
+  if (modeVideo) modeVideo.classList.toggle('on', studioState.mode === 'video');
+  if (modePost) modePost.classList.toggle('on', studioState.mode === 'post');
+  var title = document.getElementById('studioMainTitle');
+  if (title) title.textContent = studioState.mode === 'post' ? '生成 IP 图文' : '生成宠物动画';
+  var d15 = document.getElementById('studioDuration15');
+  var d30 = document.getElementById('studioDuration30');
+  if (studioState.mode === 'post') {
+    if (d15) d15.textContent = '2张图';
+    if (d30) d30.textContent = '4张图';
+    if (d15) d15.classList.toggle('on', studioState.postCount === 2);
+    if (d30) d30.classList.toggle('on', studioState.postCount === 4);
+  } else {
+    if (d15) d15.textContent = '15s';
+    if (d30) d30.textContent = '30s';
+    if (d15) d15.classList.toggle('on', studioState.duration === 15);
+    if (d30) d30.classList.toggle('on', studioState.duration === 30);
+  }
+}
+
+function pickStudioDuration(seconds){
+  if (studioState.mode === 'post') {
+    studioState.postCount = seconds === 30 ? 4 : 2;
+  } else {
+    studioState.duration = seconds;
+  }
+  var d15 = document.getElementById('studioDuration15');
+  var d30 = document.getElementById('studioDuration30');
+  if (studioState.mode === 'post') {
+    if (d15) d15.classList.toggle('on', studioState.postCount === 2);
+    if (d30) d30.classList.toggle('on', studioState.postCount === 4);
+  } else {
+    if (d15) d15.classList.toggle('on', seconds === 15);
+    if (d30) d30.classList.toggle('on', seconds === 30);
+  }
+}
+
+function renderCommunityMineOutputs(){
+  var list = document.getElementById('communityMineList');
+  if (!list) return;
+  if (!studioState.outputs.length){
+    list.innerHTML = '<div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;"><img src="assets/dogphoto.png" alt="巴纳比视频缩略图" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/><div style="padding:8px 4px 2px;"><div class="profile-menu-name">巴纳比 · 夜跑冲刺</div><div class="profile-menu-sub">视频 · 30s · 刚刚生成</div></div><div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">视频</span></div></div><div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;"><img src="assets/homedog.png" alt="巴纳比图文缩略图" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/><div style="padding:8px 4px 2px;"><div class="profile-menu-name">巴纳比 · 今天的撒娇日记</div><div class="profile-menu-sub">图文 · 4 张图 · 刚刚生成</div></div><div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#fff4ec;color:var(--orange);">图文</span></div></div><div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;"><img src="assets/dogtoy.png" alt="巴纳比视频缩略图-玩具挑战" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/><div style="padding:8px 4px 2px;"><div class="profile-menu-name">巴纳比 · 玩具挑战赛</div><div class="profile-menu-sub">视频 · 15s · 2 小时前</div></div><div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">视频</span></div></div><div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;"><img src="assets/homesusu.png" alt="巴纳比图文缩略图-治愈午后" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/><div style="padding:8px 4px 2px;"><div class="profile-menu-name">巴纳比 · 治愈午后图文</div><div class="profile-menu-sub">图文 · 2 张图 · 今天 16:20</div></div><div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#fff4ec;color:var(--orange);">图文</span></div></div><div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;"><img src="assets/pet-home.png" alt="巴纳比视频缩略图-回家瞬间" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/><div style="padding:8px 4px 2px;"><div class="profile-menu-name">巴纳比 · 回家第一秒</div><div class="profile-menu-sub">视频 · 30s · 昨天 21:08</div></div><div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">视频</span></div></div><div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;"><img src="assets/homecat2.png" alt="巴纳比图文缩略图-雨天陪伴" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/><div style="padding:8px 4px 2px;"><div class="profile-menu-name">巴纳比 · 雨天陪伴手账</div><div class="profile-menu-sub">图文 · 6 张图 · 昨天 18:42</div></div><div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:#fff4ec;color:var(--orange);">图文</span></div></div>';
+    return;
+  }
+  list.innerHTML = studioState.outputs.slice(0, 6).map(function(item){
+    var preview = item.type === 'post' ? 'assets/homedog.png' : 'assets/dogphoto.png';
+    var subtitle = item.type === 'post' ? '图文内容 · 刚刚生成' : '视频内容 · 刚刚生成';
+    var badgeBg = item.type === 'post' ? '#fff4ec' : '#f0f0ff';
+    var badgeColor = item.type === 'post' ? 'var(--orange)' : 'var(--blue2)';
+    var badgeText = item.type === 'post' ? '图文' : '视频';
+    return '<div style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;"><img src="' + preview + '" alt="我的创作缩略图" loading="lazy" decoding="async" style="width:100%;height:168px;border-radius:10px;object-fit:cover;display:block;"/><div style="padding:8px 4px 2px;"><div class="profile-menu-name">' + item.title + '</div><div class="profile-menu-sub">' + subtitle + '</div></div><div style="display:flex;justify-content:flex-end;"><span class="profile-menu-badge" style="background:' + badgeBg + ';color:' + badgeColor + ';">' + badgeText + '</span></div></div>';
+  }).join('');
+}
+
+function renderStudioOutputs(){
+  var result = document.getElementById('studioResultCard');
+  if (!result) return;
+  result.classList.remove('studio-result--loading');
+  if (!studioState.outputs.length){
+    result.innerHTML = '<div class="studio-result-title">还没有生成内容</div><div class="studio-result-sub">试试模板：日常撒娇 15s 或 今日治愈图文</div>';
+    renderCommunityMineOutputs();
+    return;
+  }
+  var top = studioState.outputs[0];
+  result.innerHTML = '<div class="studio-result-title">最新作品</div><div class="studio-result-sub">' + top.title + '</div>';
+  renderCommunityMineOutputs();
+}
+
+function startStudioGeneration(){
+  var prompt = getStudioPromptText();
+  var status = document.getElementById('studioStatusPill');
+  var result = document.getElementById('studioResultCard');
+  renderStudioHint();
+  studioState.status = 'generating';
+  if (status) status.textContent = '生成中';
+  if (result) {
+    result.classList.add('studio-result--loading');
+    if (studioState.mode === 'post') {
+      result.innerHTML = '<div class="studio-result-title">正在生成 IP 图文...</div><div class="studio-result-sub">请稍候，正在根据你的文字描述编排文案与配图</div>';
+    } else {
+      result.innerHTML = '<div class="studio-result-title">正在生成宠物动画...</div><div class="studio-result-sub">请稍候，正在根据你的文字描述合成 ' + studioState.duration + ' 秒视频</div>';
+    }
+  }
+  setTimeout(function(){
+    studioState.status = 'done';
+    var promptBrief = prompt ? (' · ' + prompt) : '';
+    var output = {
+      id: Date.now(),
+      type: studioState.mode,
+      title: studioState.mode === 'post'
+        ? ('图文 · ' + studioState.postCount + '张图' + promptBrief)
+        : ('视频 · ' + studioState.duration + 's' + promptBrief)
+    };
+    studioState.outputs.unshift(output);
+    if (status) status.textContent = '已完成';
+    renderStudioOutputs();
+    showToast(studioState.mode === 'post' ? '📝 图文已生成，可立即发布' : '🎬 动画已生成，可立即保存或发布');
+  }, 1200);
+}
+
+function startAnimationGenerationFromUI(){
+  setStudioMode('video');
+  startStudioGeneration();
+}
+
+function startPostGenerationFromUI(){
+  setStudioMode('post');
+  startStudioGeneration();
+}
+
+function getStudioPromptText(){
+  var el = document.getElementById('studioPromptInput');
+  if (!el) return '';
+  var txt = el.value.trim();
+  if (!txt) return '';
+  if (txt.length <= 24) return txt;
+  return txt.slice(0, 24) + '...';
+}
+
+function saveStudioOutput(){
+  if (!studioState.outputs.length) {
+    showToast('📭 先生成一个宠物动画');
+    return;
+  }
+  showToast('💾 已保存到作品库');
+}
+
+function publishStudioOutput(){
+  if (!studioState.outputs.length) {
+    showToast('📭 先生成一个宠物动画');
+    return;
+  }
+  showToast('🚀 已发布到内容流');
 }
 </script>
 </body>

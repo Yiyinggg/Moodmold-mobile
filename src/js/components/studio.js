@@ -13,6 +13,7 @@ function initStudioScreen(){
   if (d30) d30.classList.remove('on');
   renderStudioHint();
   renderStudioOutputs();
+  renderCommunityMineOutputs();
   setStudioMode('video');
 }
 
@@ -125,10 +126,27 @@ function renderStudioOutputs(){
   result.classList.remove('studio-result--loading');
   if (!studioState.outputs.length){
     result.innerHTML = '<div class="studio-result-title">还没有生成内容</div><div class="studio-result-sub">试试模板：日常撒娇 15s 或 今日治愈图文</div>';
+    renderCommunityMineOutputs();
     return;
   }
   var top = studioState.outputs[0];
   result.innerHTML = '<div class="studio-result-title">最新作品</div><div class="studio-result-sub">' + top.title + '</div>';
+  renderCommunityMineOutputs();
+}
+
+function renderCommunityMineOutputs(){
+  var list = document.getElementById('communityMineList');
+  if (!list) return;
+  if (!studioState.outputs.length){
+    list.innerHTML = '<div class="profile-menu-item"><div class="profile-menu-icon" style="background:#f3f0ff;">📭</div><div class="profile-menu-text"><div class="profile-menu-name">还没有创作内容</div><div class="profile-menu-sub">去内容工坊生成第一条图文或视频</div></div></div>';
+    return;
+  }
+  list.innerHTML = studioState.outputs.slice(0, 3).map(function(item){
+    var icon = item.type === 'post' ? '📝' : '🎬';
+    var iconBg = item.type === 'post' ? '#fff4ec' : '#f3f0ff';
+    var subtitle = item.type === 'post' ? '图文内容 · 刚刚生成' : '视频内容 · 刚刚生成';
+    return '<div class="profile-menu-item"><div class="profile-menu-icon" style="background:' + iconBg + ';">' + icon + '</div><div class="profile-menu-text"><div class="profile-menu-name">' + item.title + '</div><div class="profile-menu-sub">' + subtitle + '</div></div><span class="profile-menu-arrow">›</span></div>';
+  }).join('');
 }
 
 function saveStudioOutput(){
