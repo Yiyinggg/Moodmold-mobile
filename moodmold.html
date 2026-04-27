@@ -1221,6 +1221,10 @@ body{font-family:var(--font);background:#e8e8f0;display:flex;flex-direction:colu
           <div style="font-size:14px;font-weight:900;color:var(--text);">生成结果</div>
           <span id="studioStatusPill" class="profile-menu-badge" style="background:#f0f0ff;color:var(--blue2);">待生成</span>
         </div>
+        <div id="studioPreviewBox" style="background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:14px;padding:8px;margin-bottom:10px;">
+          <div id="studioPreviewMedia" style="width:100%;height:152px;border-radius:10px;background:#f4f4f8;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;font-weight:700;">暂无可预览结果</div>
+          <div id="studioPreviewMeta" style="font-size:11px;color:var(--muted);font-weight:700;margin-top:8px;">先点击 AI一键生成 或选择模式生成内容</div>
+        </div>
         <div id="studioResultCard" class="story-card" style="margin:0;">
           <div class="story-label">还没有生成内容</div>
           <div class="story-text">试试模板：日常撒娇 15s 或 今日治愈图文</div>
@@ -2944,15 +2948,27 @@ function renderCommunityMineOutputs(){
 
 function renderStudioOutputs(){
   var result = document.getElementById('studioResultCard');
+  var previewMedia = document.getElementById('studioPreviewMedia');
+  var previewMeta = document.getElementById('studioPreviewMeta');
   if (!result) return;
   result.classList.remove('studio-result--loading');
   if (!studioState.outputs.length){
     result.innerHTML = '<div class="studio-result-title">还没有生成内容</div><div class="studio-result-sub">试试模板：日常撒娇 15s 或 今日治愈图文</div>';
+    if (previewMedia) previewMedia.innerHTML = '暂无可预览结果';
+    if (previewMeta) previewMeta.textContent = '先点击 AI一键生成 或选择模式生成内容';
     renderCommunityMineOutputs();
     return;
   }
   var top = studioState.outputs[0];
   result.innerHTML = '<div class="studio-result-title">最新作品</div><div class="studio-result-sub">' + top.title + '</div>';
+  if (previewMedia) {
+    if (top.type === 'post') {
+      previewMedia.innerHTML = '<img src="assets/homedog.png" alt="图文生成结果预览" loading="lazy" decoding="async" style="width:100%;height:100%;border-radius:10px;object-fit:cover;display:block;"/>';
+    } else {
+      previewMedia.innerHTML = '<div style="position:relative;width:100%;height:100%;"><img src="assets/dogphoto.png" alt="视频生成结果预览" loading="lazy" decoding="async" style="width:100%;height:100%;border-radius:10px;object-fit:cover;display:block;"/><span style="position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,0.55);color:#fff;font-size:10px;font-weight:800;padding:3px 7px;border-radius:10px;">▶ ' + (studioState.duration || 15) + 's</span></div>';
+    }
+  }
+  if (previewMeta) previewMeta.textContent = top.type === 'post' ? '图文预览 · 可发布到社群与外部平台' : '视频预览 · 可保存至本地或发布';
   renderCommunityMineOutputs();
 }
 
@@ -2971,6 +2987,10 @@ function startStudioGeneration(){
       result.innerHTML = '<div class="studio-result-title">正在生成宠物动画...</div><div class="studio-result-sub">请稍候，正在根据你的文字描述合成 ' + studioState.duration + ' 秒视频</div>';
     }
   }
+  var previewMedia = document.getElementById('studioPreviewMedia');
+  var previewMeta = document.getElementById('studioPreviewMeta');
+  if (previewMedia) previewMedia.innerHTML = '<div style="font-size:12px;color:var(--muted);font-weight:700;">正在生成预览…</div>';
+  if (previewMeta) previewMeta.textContent = studioState.mode === 'post' ? '图文内容生成中，请稍候' : '视频内容生成中，请稍候';
   setTimeout(function(){
     studioState.status = 'done';
     var promptBrief = prompt ? (' · ' + prompt) : '';
