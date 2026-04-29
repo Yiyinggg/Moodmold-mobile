@@ -95,7 +95,7 @@ const gSteps = [
   {label:'建模性格中…', pct:40},
   {label:'雕刻 3D 形象中…', pct:65},
   {label:'绑定情绪引擎中…', pct:84},
-  {label:'送入 VR 世界！', pct:100}
+  {label:'送入 AR 世界！', pct:100}
 ];
 let genInterval = null;
 

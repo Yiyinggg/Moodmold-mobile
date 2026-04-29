@@ -25,5 +25,7 @@ function selectShopFig(key, val){
 function confirmShopFig(){
   const pet = document.getElementById('shopFigPetName');
   const name = pet ? pet.textContent.trim() : '巴纳比';
-  showToast('已加入心愿单：' + name + ' · ' + shopFigSel.size + ' 码 · ' + SHOP_FIG_MAT[shopFigSel.mat]);
+  const line = document.getElementById('shopFigPayOrderLine');
+  if (line) line.textContent = name + ' · ' + shopFigSel.size + ' 码 · ' + SHOP_FIG_MAT[shopFigSel.mat];
+  goTo('sc-shop-fig-pay-success');
 }
